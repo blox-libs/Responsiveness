@@ -1,6 +1,4 @@
 # Responsiveness
-
-**Version:** 2.0  
 **Description:** A responsive UI scaling solution for Roblox  
 
 ---
@@ -30,8 +28,7 @@
 - **Range**: `NumberRange(min, max)` to constrain scaling bounds. (default: `NumberRange.new(0, math.huge)`)  
 - **Resolution**: `Vector2(width, height)` reference resolution for calculations. (default: `Vector2.new(1280, 720)`)  
 - **InnerRatios**: JSON string mapping display sizes to ratio multipliers. (default: `{"Large": 1, "Medium": 1, "Small": 1}`)
-→ applies 0.8x ratio on large screens, 1.2x on small screens. 
-Display size reference: https://create.roblox.com/docs/reference/engine/enums/DisplaySize
+→ applies 0.8x ratio on large screens, 1.2x on small screens. [View DisplaySize's Reference](https://create.roblox.com/docs/reference/engine/enums/DisplaySize)
 
 ## Example: 
 ```lua
