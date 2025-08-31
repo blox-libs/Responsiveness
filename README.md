@@ -50,11 +50,11 @@ responsive:Destroy()
 
 ## Mentions / Projects Using Responsiveness & QuickScale
 
-Below is a list of experiences, games, or projects that use **Responsiveness** or **QuickScale**.  
-If your project uses our libraries and you want it listed, feel free to submit a PR or contact us.
+Below is a list of experiences, games, or projects that use or have used **Responsiveness** or **QuickScale**.  
+If your project uses our libraries and you want it listed, feel free to contact [PcoiDev](https://pcoi.dev).
 
-| Project Name | Platform / Link | Notes |
-|-------------|----------------|-------|
-| Example Game 1 | [Roblox](https://www.roblox.com/games/123456789/Example-Game-1) | Uses Responsiveness for main UI scaling |
-| Example Game 2 | [Roblox](https://www.roblox.com/games/987654321/Example-Game-2) | Uses QuickScale for inventory UI |
-| Example Game 3 | [Roblox](https://www.roblox.com/games/456789123/Example-Game-3) | Both Responsiveness & QuickScale integrated |
+| Name | Link |
+|-------------|----------------|
+| Example Game 1 | [Roblox](https://www.roblox.com/games/123456789/Example-Game-1) |
+| Example Game 2 | [Roblox](https://www.roblox.com/games/987654321/Example-Game-2) |
+| Example Game 3 | [Roblox](https://www.roblox.com/games/456789123/Example-Game-3) |
