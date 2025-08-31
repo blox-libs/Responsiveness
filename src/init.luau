@@ -1,7 +1,6 @@
 --!strict
 
---// SOURCE & LICENSE: https://github.com/blox-libs/Responsiveness
-
+--// Source & LICENSE: https://github.com/blox-libs/Responsiveness
 debug.setmemorycategory(script.Name)
 
 local HttpService = game:GetService("HttpService")
@@ -37,19 +36,25 @@ export type GuiContainer = ScreenGui
 export type Responsiveness = typeof(setmetatable({} :: {
 	_isTracking: boolean,
 	_uiScale: UIScale,
+	_innerRatios: {[string]: number}?,
 	_guiContainer: GuiContainer?,
+	
 	_connections: {RBXScriptConnection},
 	_scaleConnection: RBXScriptConnection?,
-	_innerRatios: {[string]: number}?,
+	_destroyConnection: RBXScriptConnection?,
 
 	ComputeScale: (self: Responsiveness) -> number?,
+	
 	GetAttributes: (self: Responsiveness, displaySize: Enum.DisplaySize?) -> Attributes,
 	GetAbsoluteSize: (self: Responsiveness) -> Vector2?,
+	
 	UpdateContainer: (self: Responsiveness) -> (),
 	UpdateInnerRatios: (self: Responsiveness) -> (),
 	UpdateScale: (self: Responsiveness) -> (),
+	
 	Track: (self: Responsiveness) -> (),
 	UnTrack: (self: Responsiveness) -> (),
+	
 	Destroy: (self: Responsiveness) -> (),
 }, {} :: {
 	__index: Responsiveness
@@ -80,7 +85,7 @@ function Responsiveness.new(uiScale: UIScale): Responsiveness
 	self._uiScale = uiScale
 	self._guiContainer = getGuiContainer(uiScale)
 	
-	uiScale.Destroying:Once(function()
+	self._destroyConnection = uiScale.Destroying:Once(function()
 		self:Destroy()
 	end)
 	
@@ -186,9 +191,9 @@ function Responsiveness.Track(self: Responsiveness)
 	self:UpdateContainer()
 	self:UpdateInnerRatios()
 	
-	RunService.RenderStepped:Once(function()
+	table.insert(self._connections, RunService.RenderStepped:Once(function()
 		self:UpdateScale()
-	end)
+	end))
 	
 	table.insert(self._connections, self._uiScale.AncestryChanged:Connect(function()
 		self:UpdateContainer()
@@ -225,6 +230,13 @@ function Responsiveness.UnTrack(self: Responsiveness)
 	table.clear(self._connections)
 end
 
-Responsiveness.Destroy = Responsiveness.UnTrack
+function Responsiveness.Destroy(self: Responsiveness)
+	self:UnTrack()
+
+	if self._destroyConnection then
+		self._destroyConnection:Disconnect()
+		self._destroyConnection = nil
+	end
+end
 
 return Responsiveness
