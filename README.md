@@ -55,5 +55,5 @@ If your project uses our libraries and you want it listed, feel free to contact 
 
 | Name | Link |
 |-------------|----------------|
-| Squid Game Tower | [Link](https://www.roblox.com/games/103410145208388/Squid-Game-Tower) |
-| Squid Game Troll Tower | [Link](https://www.roblox.com/games/75139493550474/Squid-Game-Troll-Tower) |
+| Squid Game Tower | [View Game](https://www.roblox.com/games/103410145208388/Squid-Game-Tower) |
+| Squid Game Troll Tower | [View Game](https://www.roblox.com/games/75139493550474/Squid-Game-Troll-Tower) |
