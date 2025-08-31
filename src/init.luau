@@ -1,4 +1,5 @@
 --!strict
+
 --// SOURCE & LICENSE: https://github.com/blox-libs/Responsiveness
 
 debug.setmemorycategory(script.Name)
@@ -17,16 +18,15 @@ local DEFAULT_RATIO = 1
 local DEFAULT_RESOLUTION = Vector2.new(1280, 720)
 
 
+type DockWidgetPluginGui = ScreenGui & {
+	HostWidgetWasRestored: boolean,
+	Title: string,
+}
+
 export type Attributes = {
 	Range: NumberRange,
 	Ratio: number,
 	Resolution: Vector2
-}
-
--- DockWidgetPluginGui does not exist as a type.
-type DockWidgetPluginGui = ScreenGui & {
-	HostWidgetWasRestored: boolean,
-	Title: string,
 }
 
 export type GuiContainer = ScreenGui
@@ -34,15 +34,14 @@ export type GuiContainer = ScreenGui
 | BillboardGui
 | SurfaceGui
 
-export type Responsiveness = {
+export type Responsiveness = typeof(setmetatable({} :: {
 	_isTracking: boolean,
 	_uiScale: UIScale,
 	_guiContainer: GuiContainer?,
 	_connections: {RBXScriptConnection},
 	_scaleConnection: RBXScriptConnection?,
 	_innerRatios: {[string]: number}?,
-	 
-	CleanOnDestroy: (self: Responsiveness) -> (),
+
 	ComputeScale: (self: Responsiveness) -> number?,
 	GetAttributes: (self: Responsiveness, displaySize: Enum.DisplaySize?) -> Attributes,
 	GetAbsoluteSize: (self: Responsiveness) -> Vector2?,
@@ -52,7 +51,9 @@ export type Responsiveness = {
 	Track: (self: Responsiveness) -> (),
 	UnTrack: (self: Responsiveness) -> (),
 	Destroy: (self: Responsiveness) -> (),
-}
+}, {} :: {
+	__index: Responsiveness
+}))
 
 
 local function getGuiContainer(uiScale: UIScale): GuiContainer?
@@ -78,6 +79,10 @@ function Responsiveness.new(uiScale: UIScale): Responsiveness
 	
 	self._uiScale = uiScale
 	self._guiContainer = getGuiContainer(uiScale)
+	
+	uiScale.Destroying:Once(function()
+		self:Destroy()
+	end)
 	
 	return self
 end
