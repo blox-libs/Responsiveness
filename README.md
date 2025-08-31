@@ -55,6 +55,5 @@ If your project uses our libraries and you want it listed, feel free to contact 
 
 | Name | Link |
 |-------------|----------------|
-| Example Game 1 | [Roblox](https://www.roblox.com/games/123456789/Example-Game-1) |
-| Example Game 2 | [Roblox](https://www.roblox.com/games/987654321/Example-Game-2) |
-| Example Game 3 | [Roblox](https://www.roblox.com/games/456789123/Example-Game-3) |
+| Squid Game Tower | [Link](https://www.roblox.com/games/103410145208388/Squid-Game-Tower) |
+| Squid Game Troll Tower | [Link](https://www.roblox.com/games/75139493550474/Squid-Game-Troll-Tower) |
