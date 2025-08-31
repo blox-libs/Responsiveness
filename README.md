@@ -1,5 +1,6 @@
 # Responsiveness
-## A responsive UI scaling solution for Roblox  
+
+A responsive UI scaling solution for Roblox  
 
 ---
 
